@@ -1,5 +1,5 @@
-﻿﻿using SamuraiApp.Data;
-using SamuraiApp.Domain;
+﻿﻿using Samurai.Data;
+using Samurai.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +50,7 @@ namespace ConsoleApp
     }
     private static void InsertNewSamuraiWithAQuote()
     {
-      var samurai = new Samurai
+      var samurai = new Samurai.Domain.Samurai
       {
         Name = "Kambei Shimada",
         Quotes = new List<Quote>
@@ -63,7 +63,7 @@ namespace ConsoleApp
     }
     private static void InsertNewSamuraiWithManyQuotes()
     {
-      var samurai = new Samurai
+      var samurai = new Samurai.Domain.Samurai
       {
         Name = "Kyūzō",
         Quotes = new List<Quote> {
@@ -175,7 +175,7 @@ namespace ConsoleApp
     private static void JoinBattleAndSamurai()
     {
       //Samurai and Battle already exist and we have their IDs
-      var sbJoin = new SamuraiBattle { SamuraiId = 2, BattleId = 1 };
+      var sbJoin = new Samurai.Domain.SamuraiBattle { SamuraiId = 2, BattleId = 1 };
       _context.Add(sbJoin);
       _context.SaveChanges();
     }
@@ -183,7 +183,7 @@ namespace ConsoleApp
     {
       var battle = _context.Battles.Find(1);
       battle.SamuraiBattles
-          .Add(new SamuraiBattle { SamuraiId = 21 });
+          .Add(new Samurai.Domain.SamuraiBattle { SamuraiId = 21 });
       _context.SaveChanges();
       
     }
@@ -204,13 +204,13 @@ namespace ConsoleApp
     }
     private static void RemoveJoinBetweenSamuraiAndBattleSimple()
     {
-      var join = new SamuraiBattle { BattleId = 1, SamuraiId = 2 };
+      var join = new Samurai.Domain.SamuraiBattle { BattleId = 1, SamuraiId = 2 };
       _context.Remove(join);
       _context.SaveChanges();
     }
     private static void AddNewSamuraiWithHorse()
     {
-      var samurai = new Samurai { Name = "Jina Ujichika" };
+      var samurai = new Samurai.Domain.Samurai { Name = "Jina Ujichika" };
       samurai.Horse = new Horse { Name = "Silver" };
       _context.Samurais.Add(samurai);
       _context.SaveChanges();
