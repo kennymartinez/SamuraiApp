@@ -25,7 +25,8 @@ namespace Samurai.Data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-                    .UseSqlServer("Server=localhost;Database=SamuraiTestData;User Id=sa;Password=.Kenny20;");
+                    //.UseSqlServer("Server=localhost;Database=SamuraiTestData;User Id=sa;Password=.Kenny20;");
+                    .UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SamuraiTestData;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
